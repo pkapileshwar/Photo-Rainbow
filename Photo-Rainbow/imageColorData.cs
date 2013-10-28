@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Drawing;
 
-namespace SimpleDrawing
+namespace Photo_Rainbow
 {
-    class imageColorData
+    class ImageColorData
     {
         private int imageWidth;
         private int imageHeight;
@@ -131,7 +132,8 @@ namespace SimpleDrawing
                 return temp;
             }
         }
-        public imageColorData()
+
+        public void imageColorData()
         {
             imageWidth = 0;
             imageHeight = 0;
