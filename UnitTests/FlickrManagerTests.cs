@@ -5,21 +5,36 @@ namespace UnitTests
 {
     using NUnit.Framework;
     using Photo_Rainbow;
+    using Moq;
+    using FlickrNet;
 
     [TestFixture]
     public class FlickrManagerTests
     {
+        private static FlickrManager f;
+        private static Mock<Flickr> flickrMock;
+
+        [SetUp]
+        public void Init()
+        {
+            f = new FlickrManager();
+        }
+
         [Test]
         public void IsInstanceOfIAPIManager()
         {
-            FlickrManager f = new FlickrManager();
             Assert.IsInstanceOf<IAPIManager>(f);
+        }
+
+        [Test]
+        public void SetsFlickrInstance()
+        {
+            Assert.IsInstanceOf<Flickr>(f.Instance);
         }
 
         [Test]
         public void AuthenticationTest()
         {
-            FlickrManager f = new FlickrManager();
             f.Authenticate();
 
             Assert.IsNotNull(f.url);
@@ -28,7 +43,13 @@ namespace UnitTests
         [Test]
         public void CompleteAuthTest()
         {
-            //TODO: not sure how to test this, since Code is required
+            //TODO: figure out how to test this
+        }
+
+        [Test]
+        public void GetPhotosTest()
+        {
+            //TODO: figure out how to test this
         }
     }
 }
