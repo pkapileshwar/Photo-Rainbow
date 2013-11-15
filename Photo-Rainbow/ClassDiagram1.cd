@@ -55,11 +55,26 @@
       <HashCode>AAAAAAAAAAAAAAAAQAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
     </TypeIdentifier>
   </Class>
-  <Class Name="Photo_Rainbow.Storage">
-    <Position X="4" Y="2.5" Width="1.5" />
+  <Class Name="Photo_Rainbow.XMLWrite">
+    <Position X="4.25" Y="2.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Photo_Rainbow.XMLWrite.Image" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>XMLWrite.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Photo_Rainbow.XMLWrite.Data" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>XMLWrite.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
-      <FileName>Storage.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>XMLWrite.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="Photo_Rainbow.IAPIManager" Collapsed="true">
