@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Drawing;
 
 namespace Photo_Rainbow
 {
@@ -54,6 +55,16 @@ namespace Photo_Rainbow
                 FlickrManager f = (FlickrManager)p.Manager;
                 f.CompleteAuth(CodeText.Text);
                 MessageBox.Show("User authenticated!");
+                if (f.IsAuthenticated())
+                {                    
+                    List<Image> imgObjs = f.GetPhotos();
+                    ImageColorData img = new ImageColorData();
+                    foreach (Image imgObj in imgObjs)
+                    {       
+                 
+                        Dictionary<String, List<System.Drawing.Color>> imgColor = img.getColorsInImage(imgObj.Img);                        
+                    }
+                }
             }
             catch (Exception ex)
             {

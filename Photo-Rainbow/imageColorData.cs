@@ -84,6 +84,15 @@ namespace Photo_Rainbow
                     {
                         imgVIBGYORHueDiffDict.Add(temp, "Red");
                     }
+
+                    //Color Red has 2 hues one is 0 degree and another is 360 degree.
+                    //C# GetHue() method gives only 0 degree.
+                    temp = pixelColorHue - 360;
+                    temp = adjustHue(temp);
+                    if (!imgVIBGYORHueDiffDict.ContainsKey(temp))
+                    {
+                        imgVIBGYORHueDiffDict.Add(temp, "Red");
+                    }
                     foreach (float hueDiff in imgVIBGYORHueDiffDict.Keys)
                     {
                         imgVIBGYORHueDiff.Add(hueDiff);
