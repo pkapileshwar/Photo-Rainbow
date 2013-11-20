@@ -11,33 +11,34 @@ namespace Photo_Rainbow
     {
         const string ApiKey = "6c24e7c523faa6feee78c696b8ea31e2";
         const string SharedSecret = "88b95e7cc030a4cf";
-        public static Flickr flickrInstance;
         public string url;
 
+
+        private static Flickr instance;
         private OAuthRequestToken requestToken; 
 
         public FlickrManager()
         {
-            flickrInstance = new Flickr(ApiKey, SharedSecret);
+            Instance = new Flickr(ApiKey, SharedSecret);
         }
 
         public void Authenticate()
         {
-            requestToken = flickrInstance.OAuthGetRequestToken("oob");
+            requestToken = Instance.OAuthGetRequestToken("oob");
 
-            url = flickrInstance.OAuthCalculateAuthorizationUrl(requestToken.Token, AuthLevel.Write);
-
-            Console.WriteLine(url);
+            url = Instance.OAuthCalculateAuthorizationUrl(requestToken.Token, AuthLevel.Write);
         }
 
         public void CompleteAuth(string Code)
         {
             try
             {
-                OAuthToken = flickrInstance.OAuthGetAccessToken(requestToken, Code);
+
+                OAuthToken = Instance.OAuthGetAccessToken(requestToken, Code);
             }
             catch (FlickrApiException ex)
             {
+                Console.WriteLine(ex.Message);
                 //TODO: Need exception handling
             }
         }
@@ -45,6 +46,12 @@ namespace Photo_Rainbow
         public Boolean IsAuthenticated()
         {
             return OAuthToken != null;
+        }
+
+        public Flickr Instance
+        {
+            set { instance = value; }
+            get { return instance; }
         }
 
         public static OAuthAccessToken OAuthToken
@@ -60,9 +67,23 @@ namespace Photo_Rainbow
             }
         }
 
-        public void GetPhotos()
+        public List<Image> GetPhotos()
         {
+            List<Image> images = new List<Image>();
 
+            PhotoCollection photocollection = Instance.PeopleGetPhotos();            
+            foreach (Photo p in photocollection)
+            {
+                if (p.LargeUrl != null)
+                {
+                    Image userImage = new Image(p.LargeUrl);
+                    userImage.Download();
+                    images.Add(userImage);
+                }
+            }
+
+            return images;
+        
         }
 
     }

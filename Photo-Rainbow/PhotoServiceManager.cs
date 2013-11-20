@@ -8,7 +8,7 @@ namespace Photo_Rainbow
 {
     class PhotoServiceManager
     {
-        public static IAPIManager manager;
+        private static IAPIManager manager;
 
         public void LoadManager(IAPIManager m)
         {
@@ -18,6 +18,12 @@ namespace Photo_Rainbow
         public void Authenticate()
         {
             manager.Authenticate();
+        }
+
+        public IAPIManager Manager
+        {
+            set { manager = value; }
+            get { return manager; }
         }
     }
 }

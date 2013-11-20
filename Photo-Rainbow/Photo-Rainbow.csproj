@@ -42,6 +42,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -69,12 +70,16 @@
     </Compile>
     <Compile Include="FlickrManager.cs" />
     <Compile Include="IAPIManager.cs" />
+    <Compile Include="ImageAnalysis.cs" />
+    <Compile Include="ImageColorData.cs" />
+    <Compile Include="ImageColorData2.cs" />
     <Compile Include="Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Image.cs" />
     <Compile Include="PhotoServiceManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
